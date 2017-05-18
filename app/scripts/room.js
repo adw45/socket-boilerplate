@@ -9,7 +9,7 @@ function getParameterByName(name, url) {
 }
 
 var id = getParameterByName("id");
-var socket = io.connect('http://localhost:3000/');
+var socket = io.connect(window.location.host);
 var username = Math.random(); 
 socket.emit('joinRoom', {
     roomname: id,
