@@ -1,5 +1,5 @@
 var express = require('express');
-var server = require('https');
+var server = require('http');
 var io = require('socket.io');
 var app = express();
 server = server.Server(app);
@@ -11,8 +11,10 @@ var routes = require('./router.js');
 app.use(express.static('./app'));
 app.use('/_api', routes);
 
-server.listen(443, function () {
-  console.log('Example app listening on port 3000!')
+var port = process.env.PORT || 3000;
+
+server.listen(port, function () {
+  console.log('Example app listening on port', port)
 });
 
 var numbers = {};
