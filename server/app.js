@@ -8,7 +8,7 @@ io = io(server);
 module.exports = io;
 var routes = require('./router.js');
 
-app.use(express.static('../app'));
+app.use(express.static('./app'));
 app.use('/_api', routes);
 
 server.listen(3000, function () {
