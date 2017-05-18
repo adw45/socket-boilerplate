@@ -10,10 +10,22 @@ function getParameterByName(name, url) {
 
 var id = getParameterByName("id");
 var socket = io.connect('http://localhost:3000/');
-
-socket.emit('joinRoom', id);
+var username = Math.random(); 
+socket.emit('joinRoom', {
+    roomname: id,
+    username: username
+});
 
 // socket listeners
 socket.on('update', function (data) {
+    console.log(data);
     jQuery("#number").text(data.number);
 });
+
+function increase() {
+    socket.emit('increase');
+}
+function decrease() {
+    socket.emit('decrease');
+}
+
