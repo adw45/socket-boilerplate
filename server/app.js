@@ -20,8 +20,17 @@ server.listen(port, function () {
 var numbers = {};
 
 io.on('connection', function (socket) {
+
+  socket.on('disconnect', function() {
+    socket.leave(socket.room);
+    if (!io.sockets.adapter.rooms[socket.room]) {
+      delete numbers[socket.room];
+    }
+  })
+
   socket.on('joinRoom', function(data){
     socket.join(data.roomname);
+    
     socket.room = data.roomname;
     socket.username = data.username; 
    
