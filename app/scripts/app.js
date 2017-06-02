@@ -4,3 +4,12 @@ function createRoom() {
     console.log(roomName)
     window.location.href= '/pages/room.html?id=' + roomName; 
 }
+
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        title: 'Gladiator Academy',
+        seen: false
+    }
+});
