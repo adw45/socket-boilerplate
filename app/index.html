@@ -5,14 +5,13 @@
     </head>
     <body>
         <div id="app">
-            <h1>{{ title }}</h1>    
-            <input type="text" id="roomName" placeholder="Room name" />
-            <button onclick="createRoom()">Create Room</button>
+            <router-view></router-view>
         </div>
         
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/socket.io.js"></script>
         <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
         <script src="scripts/app.js"></script>
     </body>
 </html>

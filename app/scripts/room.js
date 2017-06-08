@@ -10,7 +10,8 @@ function getParameterByName(name, url) {
 
 var id = getParameterByName("id");
 var socket = io.connect(window.location.host);
-var username = Math.random(); 
+var username = Math.random();
+
 socket.emit('joinRoom', {
     roomname: id,
     username: username
@@ -18,7 +19,6 @@ socket.emit('joinRoom', {
 
 // socket listeners
 socket.on('update', function (data) {
-    console.log(data);
     jQuery("#number").text(data.number);
 });
 
