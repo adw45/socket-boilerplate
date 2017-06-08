@@ -1,3 +1,7 @@
+jQuery.getScript('scripts/vendor/vue-socket.min.js', (d, t, j) => {
+    Vue.use(VueSocketio, window.location.host);
+});
+
 const startRoom = Vue.component('start-room', {
     props: ['title'],
     template: `
@@ -9,7 +13,11 @@ const startRoom = Vue.component('start-room', {
     `,
     methods: {
         createRoom: function() {
-            this.$router.push( {name: 'room', params: { id: jQuery("#roomName").val() } } )
+            this.$socket.emit('joinRoom', {
+                roomname: roomName,
+                username: 1234
+            })
+            //this.$router.push( {name: 'room', params: { id: jQuery("#roomName").val() } } )
         }
     }
 });
@@ -30,6 +38,20 @@ const matchRoom = Vue.component('match-room', {
     `
 });
 
+// const store = new Vuex.Store({
+//     state: {
+//         count: 5
+//     },
+//     mutations: {
+//         increment(state) {
+//             state.count++
+//         },
+//         decrement(state) {
+//             state.count--
+//         } 
+//     }
+// });
+
 const router = new VueRouter({
     routes:[
         { path: '/', component: startRoom, props: { title: "Gladiator Academy" } } ,
@@ -38,8 +60,22 @@ const router = new VueRouter({
 });
 
 var app = new Vue({
-    router,
+    router, //store,
     el: '#app',
     data: {
+    },
+    methods: {
+        test: function() {
+            console.log(this);
+            this.$socket.emit('hello')
+        }
+    },
+    sockets: {
+        update: function(data) {
+            console.log(data);
+        },
+        hello: function(data) {
+            console.log(data);
+        }
     }
 });
