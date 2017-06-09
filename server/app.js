@@ -35,7 +35,7 @@ io.on('connection', function (socket) {
     socket.username = data.username; 
    
     if (!numbers[socket.room]) {
-        numbers[socket.room]= 5;
+        numbers[socket.room] = 5;
     }
 
     update(socket.room, {
