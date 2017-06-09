@@ -20,7 +20,6 @@ server.listen(port, function () {
 var numbers = {};
 
 io.on('connection', function (socket) {
-  console.log('connected');
 
   socket.on('disconnect', function() {
     socket.leave(socket.room);
@@ -44,9 +43,6 @@ io.on('connection', function (socket) {
     })
 
   });
-  socket.on('hello', function() {
-    socket.emit('hello');
-  })
 
   socket.on('increase', function() {
     update(socket.room, {
@@ -59,7 +55,6 @@ io.on('connection', function (socket) {
       number: --numbers[socket.room]
     });
   });
-
 
   var update = function(room, data) {
     io.in(room).emit('update', data);

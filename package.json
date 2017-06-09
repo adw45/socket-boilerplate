@@ -15,5 +15,14 @@
     "express": "^4.15.3",
     "socket.io": "^2.0.1",
     "vue-socket.io": "^2.1.1-a"
+  },
+  "devDependencies": {
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.1.0",
+    "babel-plugin-transform-runtime": "^6.1.2",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-stage-0": "^6.1.2",
+    "babel-runtime": "^5.8.0",
+    "webpack": "^1.12.2"
   }
 }
