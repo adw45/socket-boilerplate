@@ -59,5 +59,4 @@ io.on('connection', function (socket) {
   var update = function(room, data) {
     io.in(room).emit('update', data);
   }; 
-
 });
