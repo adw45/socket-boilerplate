@@ -1,18 +1,12 @@
-const matchRoom = Vue.component('match-room', {
+const team = Vue.component('team', {
     template: `
         <div>
-            <h1>Room: {{ roomName }}</h1>
-            <team></team>
-            <map-select></map-select>
-            <scoreboard></scoreboard>
-            <team></team>
+            <player-select></player-select>
+            <player-select></player-select>
+            <player-select></player-select>
+            <player-select></player-select>
         </div>
     `,
-    // <span id="number">{{ count }}</span>
-    //         </br>
-    //         </br>
-    //         <button @click="increase()">Plus!</button>
-    //         <button @click="decrease()">Minus!</button>
     methods: {
         increase: function() {
             this.$socket.emit('increase')
@@ -37,12 +31,7 @@ const matchRoom = Vue.component('match-room', {
     },
     mounted() {
         this.joinRoom();
-    },
-    watch: {
-        '$route' (to, from) {
-            this.joinRoom();
-        }
     }
 });
 
-module.exports = matchRoom;
+module.exports = team;

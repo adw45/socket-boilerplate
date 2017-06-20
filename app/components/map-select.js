@@ -1,18 +1,16 @@
-const matchRoom = Vue.component('match-room', {
+const mapSelect = Vue.component('map-select', {
     template: `
         <div>
-            <h1>Room: {{ roomName }}</h1>
-            <team></team>
-            <map-select></map-select>
-            <scoreboard></scoreboard>
-            <team></team>
+            <input type='radio' name='map'>Nagrand Arena</input>
+            <input type='radio' name='map'>Blade Edge Arena</input>
+            <input type='radio' name='map'>Dalaran Sewers</input>
+            <input type='radio' name='map'>Tigers Peak</input>
+            <input type='radio' name='map'>Tol'varan</input>
+            <input type='radio' name='map'>Ruins of Lordaeron</input>
+            <input type='radio' name='map'>Ashmane's Fall</input>
+            <input type='radio' name='map'>Black Rook Hold</input>
         </div>
     `,
-    // <span id="number">{{ count }}</span>
-    //         </br>
-    //         </br>
-    //         <button @click="increase()">Plus!</button>
-    //         <button @click="decrease()">Minus!</button>
     methods: {
         increase: function() {
             this.$socket.emit('increase')
@@ -37,12 +35,7 @@ const matchRoom = Vue.component('match-room', {
     },
     mounted() {
         this.joinRoom();
-    },
-    watch: {
-        '$route' (to, from) {
-            this.joinRoom();
-        }
     }
 });
 
-module.exports = matchRoom;
+module.exports = mapSelect;
